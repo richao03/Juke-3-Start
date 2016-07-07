@@ -19,4 +19,17 @@ juke.config(function($stateProvider){
     templateUrl: '../htmlTemplates/album.html',
     controller: 'AlbumCtrl'
   })
+  .state('artist', {
+    url: '/artist/:id',
+    templateUrl:'../htmlTemplates/artist.html',
+    controller: 'ArtistCtrl'
+  })
+  .state('artist.songs', {
+    url:'/songs',
+    templateUrl: '../htmlTemplates/artistSongs.html'
+  })
+    .state('artist.albums', {
+    url:'/albums',
+    templateUrl: '../htmlTemplates/artistAlbums.html'
+  })
 })

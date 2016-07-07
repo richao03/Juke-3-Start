@@ -7,6 +7,11 @@ juke.config(function($stateProvider){
   $stateProvider.state('allAlbums',{
     url:'/albums',
     templateUrl: '../htmlTemplates/allAlbums.html',
+    resolve: {
+      albums: function (AlbumFactory){
+        return AlbumFactory.fetchAll();
+      }
+    },
     controller: 'AlbumsCtrl'
   })
   .state('allArtists', {
@@ -22,6 +27,11 @@ juke.config(function($stateProvider){
   .state('album', {
     url: '/album/:id',
     templateUrl: '../htmlTemplates/album.html',
+    resolve:{
+      album: function(AlbumFactory, $stateParams){
+        return AlbumFactory.fetchById($stateParams.id)
+      }
+    },
     controller: 'AlbumCtrl'
   })
   .state('artist', {

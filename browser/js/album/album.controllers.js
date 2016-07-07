@@ -4,16 +4,12 @@
 
 juke.controller('AlbumCtrl', function ($scope, $log, PlayerFactory, AlbumFactory, $stateParams) {
 
-  $scope.$on('viewSwap', function (event, data) {
-    if (data.name !== 'oneAlbum') return $scope.showMe = false;
-    $scope.showMe = true;
-    AlbumFactory.fetchById($stateParams.id)
-    .then(function (album) {
-      console.log('album',album);
-      $scope.album = album;
-    })
-    .catch($log.error);
-  });
+  AlbumFactory.fetchById($stateParams.id)
+  .then(function (album) {
+    console.log('album', album);
+    $scope.album = album;
+  })
+  .catch($log.error);
 
   // main toggle
   $scope.toggle = function (song) {
